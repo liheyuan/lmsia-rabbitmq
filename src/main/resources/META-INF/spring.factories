@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.coder4.lmsia.rabbitmq.configuration.RabbitClientAutoConfiguration

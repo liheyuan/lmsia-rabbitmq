@@ -1,0 +1,38 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'idea'
+
+// Java 8
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+// Use as maven groupId/artifactId/version
+group = 'com.coder4.lmsia'
+project.archivesBaseName = 'rabbitmq'
+project.version = '0.0.1'
+
+// source & javadoc pom
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+artifacts {
+    archives sourcesJar
+}
+
+repositories {
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+}
+
+dependencies {
+
+    compileOnly 'com.fasterxml.jackson.core:jackson-databind:2.9.0'
+    compileOnly 'org.springframework.boot:spring-boot-autoconfigure:1.5.6.RELEASE'
+
+    compile 'com.rabbitmq:amqp-client:4.2.0'
+
+    // Use JUnit test framework
+    testCompileOnly 'junit:junit:4.12'
+}
+
+
